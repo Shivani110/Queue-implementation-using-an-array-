@@ -1,0 +1,90 @@
+<html>
+<body>
+<script>
+class queuearray{
+	
+constructor(x)
+{
+	this.a = this.z = 0;
+	this.m = x;
+	this.qu = new Array(this.m);
+}
+enq(n)
+{
+	if (this.m == this.z)
+	{
+		document.write("<br>Full<br>");
+		return;
+	}
+	else
+	{
+		this.qu[this.z] = n;
+		this.z++;
+	}
+	return;
+}
+dequ()
+{
+	if (this.a == this.b)
+	{
+		document.write("<br>Empty<br>");
+		return;
+	}
+	else
+	{
+		for(var p = 0; p < this.z - 1; p++)
+		{
+			this.qu[p] = this.qu[p + 1];
+		}
+		if (this.z < this.m)
+			this.qu[this.z] = 0;
+		this.z--;
+	}
+	return;
+}
+quprint()
+{
+	var p;
+	if (this.a == this.z)
+	{
+		document.write("<br>Empty<br>");
+		return;
+	}
+	for(p = this.a; p < this.z; p++)
+	{
+		document.write(this.qu[p] + " <-- ");
+	}
+	return;
+}
+qufr()
+{
+	if (this.a == this.z)
+	{
+		document.write("<br>Empty<br>");
+		return;
+	}
+	document.write("<br>Front element of the queue is: " +
+				this.qu[this.a]);
+	return;
+ }
+}
+var ob = new queuearray(6);
+ob.quprint();
+ob.enq(10);
+ob.enq(20);
+ob.enq(30);
+ob.enq(40);
+ob.enq(50);
+ob.enq(60);
+ob.quprint();
+ob.enq(70);
+ob.quprint();
+ob.dequ();
+ob.dequ();
+document.write("<br><br>After deleting two nodes the queue is: <br><br>")
+ob.quprint();
+ob.qufr();
+
+</script>
+</body>
+</html>
